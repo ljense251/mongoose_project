@@ -1,0 +1,24 @@
+@database = BigBoxStore
+@collection = GroceryInventory
+@domain = http://localhost
+@port = 3000
+
+###
+GET {{domain}}:{{port}}/find/{{database}}/{{collection}}
+Content-Type: application/json
+
+###
+POST {{domain}}:{{port}}/insert/{{database}}/{{collection}}
+Content-Type: application/json
+
+{
+  "item": "steak",
+  "food_group": "proteins"
+}
+
+
+### Delete a Collection from a Database
+DELETE http://localhost:3000/delete-collection/{{database}}/{{collection}}
+Content-Type: application/json
+
+###
