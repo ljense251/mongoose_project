@@ -13,12 +13,54 @@ Content-Type: application/json
 
 {
   "item": "steak",
-  "food_group": "proteins"
+  "food_group": "proteins",
+  "price_in_usd": 12
 }
 
+###
+@put-id = 67352fcfa53bbc2954f0be5f
+PUT {{domain}}:{{port}}/update/{{database}}/{{collection}}/{{put-id}}
+Content-Type: application/json
+
+{
+  "item": "ground beef",
+  "food_group": "proteins",
+  "price_in_usd": 500
+}
+###
+@delete-id = 26729667bf5c333ce5ee4a811
+DELETE {{domain}}:{{port}}/delete/{{database}}/{{collection}}/{{delete-id}}
 
 ### Delete a Collection from a Database
 DELETE http://localhost:3000/delete-collection/{{database}}/{{collection}}
 Content-Type: application/json
 
-###
+### Insert Many Documents
+POST {{domain}}:{{port}}/insert-many/{{database}}/{{collection}}
+Content-Type: application/json
+
+[
+    {
+        "item": "apple",
+        "food_group": "fruits",
+        "price_in_usd": 0.3,
+        "quantity": 100,
+        "calories_per_100g": 52
+    },
+    {
+        "item": "broccoli",
+        "food_group": "vegetables",
+        "price_in_usd": 1.1,
+        "quantity": 50,
+        "calories_per_100g": 34,
+        "organic": true
+    },
+    {
+        "item": "salmon",
+        "food_group": "proteins",
+        "price_in_usd": 8.5,
+        "quantity": 20,
+        "calories_per_100g": 208,
+        "wild_caught": true
+    }
+]
