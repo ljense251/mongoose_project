@@ -145,7 +145,7 @@ app.delete('/delete/:database/:collection/:id', async (req, res) => {
         // Get the appropriate Mongoose model
         const Model = await getModel(database, collection);
         // Find and delete the document by id
-        const deletedDocument = Model.findByIdAndDelete(id);
+        const deletedDocument = await Model.findByIdAndDelete(id);
         // If document not found, return 404 status code with error message
         if (!deletedDocument) {
             return res.status(404).json({ error: "Document not found" });
